@@ -41,4 +41,26 @@ Bu araç, manuel dosya düzenleme sürecini otomatikleştirerek zaman tasarrufu 
 
 1. **Projeyi indirin veya klonlayın:**
    ```bash
-   git clone [https://github.com/KULLANICI_ADINIZ/Smart_File_Organizer.git](https://github.com/KULLANICI_ADINIZ/Smart_File_Organizer.git)
+   git clone https://github.com/huseyinbaranisik/Smart_file_organizar.git
+   cd Smart_file_organizar
+   ```
+
+2. **Programı Çalıştırın:**
+   * **Seçenek A (Doğrudan Terminal):**
+     ```bash
+     python Kaynak_Kodlar/main.py
+     ```
+   * **Seçenek B (Bat Dosyası):**
+     `run.bat` dosyasına çift tıklayarak çalıştırabilirsiniz.
+
+### 🛠️ NASIL ÇALIŞIR?
+Program açıldığında size hangi klasörü düzenlemek istediğinizi sorar. Klasör yolunu girdikten sonra:
+1. Program klasördeki dosyaları tarar.
+2. Hangi dosyanın hangi kategoriye gideceğini listeler.
+3. Sizden onay bekler (**y/n**).
+4. Onay vermeniz durumunda dosyaları ilgili alt klasörlere taşır.
+
+---
+
+### 📝 LİSANS
+Bu proje MIT lisansı altındadır. Daha fazla bilgi için `LICENSE` dosyasına bakabilirsiniz.
