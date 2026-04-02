@@ -2,10 +2,7 @@ import os
 import shutil
 from pathlib import Path
 
-# --- KONFİGÜRASYON ---
-# Hedef klasör (Kullanıcının İndirilenler klasörü)
-TARGET_DIR = Path.home() / "Downloads"
-
+# --- YAPILANDIRMA ---
 # Kategori ve Uzantı Eşleşmeleri
 CATEGORIES = {
     "Görseller": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".webp", ".svg"],
@@ -16,11 +13,17 @@ CATEGORIES = {
     "Müzikler": [".mp3", ".wav", ".flac", ".m4a", ".aac"],
 }
 
-def organize_files():
-    print(f"🚀 {TARGET_DIR.absolute()} dizini taranıyor...")
+def organize_files(target_dir):
+    target_path = Path(target_dir)
+    
+    if not target_path.exists() or not target_path.is_dir():
+        print(f"❌ Hata: '{target_dir}' geçerli bir klasör yolu değil!")
+        return
+
+    print(f"\n🚀 {target_path.absolute()} dizini taranıyor...")
     
     # Tüm dosyaları listele (Klasörleri atla)
-    files = [f for f in TARGET_DIR.iterdir() if f.is_file() and f.name != "main.py" and f.name != "mvp.txt"]
+    files = [f for f in target_path.iterdir() if f.is_file() and f.name != "main.py" and f.name != "mvp.txt"]
     
     if not files:
         print("✅ Taşınacak dosya bulunamadı. Dizin zaten temiz!")
@@ -60,7 +63,7 @@ def organize_files():
                 break
         
         # Kategori klasörünü oluştur
-        category_path = TARGET_DIR / target_category
+        category_path = target_path / target_category
         category_path.mkdir(exist_ok=True)
         
         # Güvenli Taşıma (Safe Move)
@@ -85,8 +88,21 @@ def organize_files():
     input("\nKapatmak için ENTER tuşuna basın...")
 
 if __name__ == "__main__":
-    try:
-        organize_files()
-    except Exception as e:
-        print(f"\n❌ Beklenmedik bir hata oluştu: {e}")
+    print("--- Akıllı Dosya Düzenleyici ---")
+    print("Düzenlemek istediğiniz klasörün tam yolunu girin.")
+    print("(Örn: C:\\Users\\Kullanici\\Downloads veya D:\\Belgelerim)")
+    
+    selected_path = input("\nHangi klasörü düzenlemek istersiniz?: ").strip()
+    
+    # Çift tırnakları temizle (eğer kullanıcı "yolu kopyala" yapmışsa)
+    selected_path = selected_path.replace('"', '').replace("'", "")
+
+    if not selected_path:
+        print("❌ Herhangi bir yol girmediniz!")
         input("\nKapatmak için ENTER tuşuna basın...")
+    else:
+        try:
+            organize_files(selected_path)
+        except Exception as e:
+            print(f"\n❌ Beklenmedik bir hata oluştu: {e}")
+            input("\nKapatmak için ENTER tuşuna basın...")
