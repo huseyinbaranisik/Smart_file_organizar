@@ -1,0 +1,35 @@
+# 📂 Product Requirements Document: Smart File Organizer (MVP v1.0)
+
+## 1. Product Overview & Mission
+**Mission:** To eliminate digital clutter in user directories (like "Downloads") by automatically categorizing files based on their extensions.
+**Vision:** A zero-maintenance file system where manual organization is a thing of the past.
+
+## 2. The Problem
+Users accumulate hundreds of files (PDFs, Images, Videos, Installers) in a single folder. Manual organization is time-consuming, repetitive, and often neglected, leading to a "chaotic" workspace.
+
+## 3. Core Features (Product Scope)
+*   **🎯 Automated Categorization:** Instantly sorts files into predefined folders (Images, Videos, Documents, Setup).
+*   **🛡️ Conflict Resolution (Safe Move):** Prevents data loss or errors by checking for existing filenames before moving.
+*   **📊 Real-time Monitoring:** Provides visual feedback in the terminal for every operation performed.
+*   **⚡ Lightweight Implementation:** No external dependencies; runs on standard Python libraries.
+
+## 4. User Workflow
+1.  **Selection:** User targets a "Chaos Folder" (e.g., Downloads).
+2.  **Scan:** System identifies all files while ignoring existing directories.
+3.  **Match:** Extensions (.pdf, .jpg) are matched against a logical category dictionary.
+4.  **Action:** System creates necessary folders (if missing) and relocates files securely.
+
+## 5. Technical Specifications
+*   **Language:** Python 3.x
+*   **Core Modules:** `os`, `shutil`, `pathlib`
+*   **Performance Goal:** Process 100+ files in under 1 second.
+
+## 6. Success Metrics (KPIs)
+*   **Organization Time:** Reduce manual organization time to 0 seconds.
+*   **Accuracy:** 100% matching rate for supported extensions.
+*   **Reliability:** 0% data loss during move operations.
+
+## 7. Roadmap (v2.0 & Beyond)
+*   [ ] **Visual Interface (GUI):** A user-friendly dashboard for non-technical users.
+*   [ ] **Automation:** Scheduled background tasks (e.g., "Clean every Friday at 6 PM").
+*   [ ] **Advanced Sorting:** Organization by file size, date, or custom keywords.
